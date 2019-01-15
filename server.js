@@ -20,5 +20,13 @@ app.post('/postdata', (req, res)=>{
 	var email = req.body.email;
 	var amount = req.body.amount;
 
+	if(amount <= 1){
+		info = {};
+		info.error = true;
+		info.message = "Amount is very less";
+
+		return res.send(info);
+	}
+
 	res.send({'email :' : email, 'amount : ' : amount});
 });
